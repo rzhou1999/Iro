@@ -1,0 +1,81 @@
+body {
+    color: white;
+    background-color:black;
+    margin: 0px;
+}
+
+.fade-in {
+animation: fadeIn ease 1s;
+}
+@keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+#modal {
+	z-index: 1000;
+	position: absolute;
+	background-color: black;
+	min-width: 100%;
+    min-height: 100%;
+display: table;
+}
+
+#modalText {
+    font-size: 15vmin;
+text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#modalTextSmall {
+    font-size: 6vmin;
+}
+
+
+#iroTitle {
+    font-size: 15vmin;
+
+}
+
+ 
+#scrollableWindow{
+ overflow: auto;
+ width:75vw;
+ }
+
+a{
+  color:white;
+  text-decoration: none;
+}
+
+.fade-out {
+animation: fadeOut ease 1s;
+}
+@keyframes fadeOut {
+100% {opacity:0;}
+0% {opacity:1;}
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
