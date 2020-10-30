@@ -4,14 +4,6 @@ body {
     margin: 0px;
 }
 
-.fade-in {
-animation: fadeIn ease 1s;
-}
-@keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
-}
-
 #modal {
 	z-index: 1000;
 	position: absolute;
