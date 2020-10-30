@@ -49,7 +49,7 @@ const filmMap = {
 }
 
 async function reloadData(){
-	var bins = await  d3.json(filmMap[document.getElementById("filmSelector").value])
+  var bins = await  d3.json(filmMap[document.getElementById("filmSelector").value])
   loadGraph(bins)
   document.getElementById("source").innerHTML = ""
 }
