@@ -1,6 +1,10 @@
 <html>
 
-<head><link rel="stylesheet" href="styles.css"></head>
+<head>
+<title>Iro • 色</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
 
 <body>
 
@@ -39,72 +43,130 @@
   </div>
   </center>
 
-<script src="https://d3js.org/d3.v6.min.js"></script>
+  <script>
 
-<script>
+  const filmMap = {
+    "Film1": "https://randyzhou.com/Iro/json/test.json",
+    "Film2": "https://randyzhou.com/Iro/json/test1.json"
+  }
+<<<<<<< Updated upstream
 
-const filmMap = {
-  "Film1": "json/test.json",
-  "Film2": "json/test1.json"
-}
+  async function reloadData(){
+	  var bins = await  d3.json(filmMap[document.getElementById("filmSelector").value])
+    loadGraph(bins)
+    document.getElementById("source").innerHTML = ""
+  }
 
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
+
+  function updateSource(sourceObj){
+
+<<<<<<< Updated upstream
 async function reloadData(){
   var bins = await  d3.json(filmMap[document.getElementById("filmSelector").value])
   loadGraph(bins)
   document.getElementById("source").innerHTML = ""
 }
+=======
+=======
 
-function updateSource(sourceObj){
-  source = document.getElementById("source")
-  source.innerHTML = "<div><img src=\"" + sourceObj.file_name + "\" height=\"" + window.innerHeight * .25 + "\"></br></br>"+sourceObj.color +"</div>"
-}
+  async function reloadData(){
+	  var bins = await  d3.json(filmMap[document.getElementById("filmSelector").value])
+    loadGraph(bins)
+    document.getElementById("source").innerHTML = ""
+  }
 
-const barWidth = 10;
-const height = window.innerHeight * .25;
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
 
-function loadGraph(bins){
-  if (document.getElementById("scrollToggle").checked){
-      const width = barWidth * bins.length;
-      const svg = d3.select("svg");
+  function updateSource(sourceObj){
+
+>>>>>>> Stashed changes
+    const rgb = hexToRgb(sourceObj.color);
+    const sourceColorBrightness = 
+      Math.round(((rgb.r * 299) +
+        (rgb.g * 587) +
+        (rgb.b * 114)) / 1000);
+    const textColor = (sourceColorBrightness > 125) ? 'black' : 'white';
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+
+    source = document.getElementById("source")
+    source.innerHTML =
+      "<div id= \"sourceContent\" style=\"background-color:" +
+      sourceObj.color +
+      "; color:" +
+      textColor +
+      "\";><img src=\"" +
+      sourceObj.file_name +
+      "\" height=\"" +
+      window.innerHeight * .25 +
+      "\"></br>" +
+      sourceObj.color +
+      "</div>";
+  }
+
+  const barWidth = 10;
+  const height = window.innerHeight * .25;
+
+  function loadGraph(bins){
+    if (document.getElementById("scrollToggle").checked){
+        const width = barWidth * bins.length;
+        const svg = d3.select("svg");
+        svg
+          .attr("width", width)
+          .attr("height", height)
+          .selectAll("rect")
+          .data(bins)
+          .join("rect")
+          .attr("x", (d,i) => i*barWidth)
+          .attr("width", d => barWidth)
+          .attr("y", d => 0)
+          .attr("fill", d => d.color)
+          .on('mouseover', function(d,i){updateSource(d.toElement.__data__) })
+          .attr("height", d => height);
+    }
+    else {
+      const width = window.innerWidth * .75
+      const svg = d3.select("svg")
       svg
         .attr("width", width)
         .attr("height", height)
         .selectAll("rect")
         .data(bins)
         .join("rect")
-        .attr("x", (d,i) => i*barWidth)
-        .attr("width", d => barWidth)
+        .attr("x", (d,i) => i*(width/bins.length))
+        .attr("width", d => (width/bins.length))
         .attr("y", d => 0)
         .attr("fill", d => d.color)
         .on('mouseover', function(d,i){updateSource(d.toElement.__data__) })
         .attr("height", d => height);
+    }
   }
-  else {
-    const width = window.innerWidth * .75
-    const svg = d3.select("svg")
-    svg
-      .attr("width", width)
-      .attr("height", height)
-      .selectAll("rect")
-      .data(bins)
-      .join("rect")
-      .attr("x", (d,i) => i*(width/bins.length))
-      .attr("width", d => (width/bins.length))
-      .attr("y", d => 0)
-      .attr("fill", d => d.color)
-      .on('mouseover', function(d,i){updateSource(d.toElement.__data__) })
-      .attr("height", d => height);
-  }
-}
 
-var modal = document.getElementById('modal');
-modal.onclick = function() {
-    modal.classList.add("fade-out")
-    setTimeout(function(){modal.style.display = "none"}, 990);
-};
-reloadData()
-      
-</script>
+  var modal = document.getElementById('modal');
+  modal.onclick = function() {
+      modal.classList.add("fade-out")
+      setTimeout(function(){modal.style.display = "none"}, 990);
+  };
+  reloadData()
+        
+  </script>
 
 </body>
 
