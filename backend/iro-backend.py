@@ -1,15 +1,17 @@
 import cv2
 from colorthief import ColorThief
 import json
+import os
 
 MOVIE_NAME = 'chiyoko'
 MOVIE_FILE_PATH = r'movies/chiyoko.mp4'
-FRAME_SAMPLE_RATE = 100
+JSON_FOLDER_FILE_PATH = r'json/'
+FRAME_SAMPLE_RATE = 20
 
 # saves every [frame_sample_rate] frames from the mp4 [movie_file]
 # to the /frames folder
 def save_frames(movie_file_path, frame_sample_rate):
-    frame_colors = {}
+    frame_colors = []
     
     vidcap = cv2.VideoCapture(movie_file_path)
     success, image = vidcap.read()
@@ -17,18 +19,24 @@ def save_frames(movie_file_path, frame_sample_rate):
     success = True
     while success:
         if count % FRAME_SAMPLE_RATE == 0:
+            file_name = r"frames/" + MOVIE_NAME + "/frame%d.jpg" % count
             image = scale_image(image, .2)
-            write_image(r"frames/frame%d.jpg" % count, image)
+            write_image(file_name, image)
 
-            dominant_color = get_dominant_color(r"frames/frame%d.jpg" % count)
-            frame_colors[count] = dominant_color
+            dominant_color = get_dominant_color(file_name)
+            frame_colors.append(
+                {
+                "file_name":file_name,
+                "color":dominant_color
+                }
+            )
     
         success, image = vidcap.read()
         count += 1
         # vidcap.set(cv2.CAP_PROP_FRAME_WIDTH, count * FRAME_SAMPLE_RATE)
 
     #save json of the colors for each sample frame
-    with open(MOVIE_NAME + '.json', 'w') as outfile:
+    with open(JSON_FOLDER_FILE_PATH + MOVIE_NAME + '.json', 'w') as outfile:
         json.dump(frame_colors, outfile)
 # scales a given opencv image by the scale amount
 def scale_image(image, scale):
@@ -40,6 +48,9 @@ def scale_image(image, scale):
 
 # writes an opencv image to disk
 def write_image(file_path, image):
+    dir_path = file_path[:file_path.rindex("/")]
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
     if not cv2.imwrite(file_path, image):
         raise Exception("Could not write image")
 
