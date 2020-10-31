@@ -2,11 +2,9 @@ import cv2
 from colorthief import ColorThief
 import json
 import os
+import sys
 
-MOVIE_NAME = 'chiyoko'
-MOVIE_FILE_PATH = r'movies/chiyoko.mp4'
 JSON_FOLDER_FILE_PATH = r'json/'
-FRAME_SAMPLE_RATE = 20
 
 # saves every [frame_sample_rate] frames from the mp4 [movie_file]
 # to the /frames folder
@@ -60,4 +58,13 @@ def get_dominant_color(img_path):
     dominant_color = color_thief.get_color(quality=10)
     return dominant_color
 
+
+args = sys.argv
+if (len(args) != 4):
+    print("Expecting: movie name, movie file path, frame sample rate")
+
+MOVIE_NAME = args[1]
+MOVIE_FILE_PATH = args[2]
+FRAME_SAMPLE_RATE = int(args[3])
+    
 save_frames(MOVIE_FILE_PATH, FRAME_SAMPLE_RATE)

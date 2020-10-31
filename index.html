@@ -28,6 +28,7 @@
   Select film:
   <select id="filmSelector">
     <option value="Millenium Actress Clip">Millenium Actresss Clip</option>
+    <option value="Rickroll">Rickroll</option>
   </select>
 
   <button onclick="reloadData()">Click to reload</button>
@@ -45,7 +46,8 @@
   <script>
 
   const filmMap = {
-    "Millenium Actress Clip": "https://randyzhou.com/Iro/backend/json/chiyoko.json"
+    "Millenium Actress Clip": "https://randyzhou.com/Iro/backend/json/chiyoko.json",
+    "Rickroll": "https://randyzhou.com/Iro/backend/json/rickroll.json"
   }
   async function reloadData(){
 	  var bins = await  d3.json(filmMap[document.getElementById("filmSelector").value])
