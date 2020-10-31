@@ -26,7 +26,7 @@ def save_frames(movie_file_path, frame_sample_rate):
             dominant_color = get_dominant_color(file_name)
             frame_colors.append(
                 {
-                "file_name":file_name,
+                "file_name":"backend/" + file_name,
                 "color":dominant_color
                 }
             )
