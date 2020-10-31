@@ -27,8 +27,7 @@
   
   Select film:
   <select id="filmSelector">
-    <option value="Film1">Test</option>
-    <option value="Film2">Test 1</option>
+    <option value="Millenium Actress Clip">Millenium Actresss Clip</option>
   </select>
 
   <button onclick="reloadData()">Click to reload</button>
@@ -54,32 +53,14 @@
     document.getElementById("source").innerHTML = ""
   }
 
-  function hexToRgb(hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
-    } : null;
-  }
-
   function rgbArrayToString(arr){
     return "rgb(" + arr[0] + "," + arr[1] + "," + arr[2] + ")"
-  {
+  }
 
   async function reloadData(){
 	  var bins = await  d3.json(filmMap[document.getElementById("filmSelector").value])
     loadGraph(bins)
     document.getElementById("source").innerHTML = ""
-  }
-
-  function hexToRgb(hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
-    } : null;
   }
 
   function updateSource(sourceObj){
