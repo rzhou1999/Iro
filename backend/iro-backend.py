@@ -17,7 +17,7 @@ def convert_timestamp(seconds):
 
 # saves every [frame_sample_rate] frames from the mp4 [movie_file]
 # to the /frames folder
-def save_frames(movie_file_path, frame_sample_rate):
+def save_frames(movie_file_path, frame_sample_rate, scale):
     frame_colors = []
     
     vidcap = cv2.VideoCapture(movie_file_path)
@@ -26,9 +26,11 @@ def save_frames(movie_file_path, frame_sample_rate):
     count = 0
     success = True
     while success:
-        if count % FRAME_SAMPLE_RATE == 0:
+        if count % frame_sample_rate == 0:
+            if count % (frame_sample_rate * 100) == 0:
+                print("Processing " + str(count))
             file_name = r"frames/" + MOVIE_NAME + "/frame%d.jpg" % count
-            image = scale_image(image, .2)
+            image = scale_image(image, scale)
             write_image(file_name, image)
 
             dominant_color = get_dominant_color(file_name)
@@ -71,11 +73,13 @@ def get_dominant_color(img_path):
 
 
 args = sys.argv
-if (len(args) != 4):
-    print("Expecting: movie name, movie file path, frame sample rate")
+if (len(args) != 5):
+    print("Expecting: movie name, movie file path, frame sample rate, scale")
+    exit()
 
 MOVIE_NAME = args[1]
 MOVIE_FILE_PATH = args[2]
 FRAME_SAMPLE_RATE = int(args[3])
+SCALE = float(args[4])
     
-save_frames(MOVIE_FILE_PATH, FRAME_SAMPLE_RATE)
+save_frames(MOVIE_FILE_PATH, FRAME_SAMPLE_RATE, SCALE)
