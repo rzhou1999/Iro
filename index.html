@@ -59,12 +59,6 @@
     return "rgb(" + arr[0] + "," + arr[1] + "," + arr[2] + ")"
   }
 
-  async function reloadData(){
-	  var bins = await  d3.json(filmMap[document.getElementById("filmSelector").value])
-    loadGraph(bins)
-    document.getElementById("source").innerHTML = ""
-  }
-
   function updateSource(sourceObj){
 
     const rgb = sourceObj.color;
@@ -86,6 +80,8 @@
       window.innerHeight * .25 +
       "\"></br>" +
       rgbArrayToString(sourceObj.color) +
+      " • " +
+      sourceObj.timestamp +
       "</div>";
   }
 

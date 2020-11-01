@@ -6,12 +6,22 @@ import sys
 
 JSON_FOLDER_FILE_PATH = r'json/'
 
+def convert_timestamp(seconds):
+    seconds = seconds % (24 * 3600) 
+    hour = seconds // 3600
+    seconds %= 3600
+    minutes = seconds // 60
+    seconds %= 60
+      
+    return "%d:%02d:%02d" % (hour, minutes, seconds) 
+
 # saves every [frame_sample_rate] frames from the mp4 [movie_file]
 # to the /frames folder
 def save_frames(movie_file_path, frame_sample_rate):
     frame_colors = []
     
     vidcap = cv2.VideoCapture(movie_file_path)
+    fps = vidcap.get(cv2.CAP_PROP_FPS)
     success, image = vidcap.read()
     count = 0
     success = True
@@ -25,7 +35,8 @@ def save_frames(movie_file_path, frame_sample_rate):
             frame_colors.append(
                 {
                 "file_name":"backend/" + file_name,
-                "color":dominant_color
+                "color":dominant_color,
+                "timestamp":convert_timestamp(float(count) / fps)
                 }
             )
     
