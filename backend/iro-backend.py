@@ -22,6 +22,9 @@ def save_frames(movie_file_path, frame_sample_rate, scale):
     
     vidcap = cv2.VideoCapture(movie_file_path)
     fps = vidcap.get(cv2.CAP_PROP_FPS)
+    print("Found fps: " + str(fps))
+    frame_sample_rate = round(frame_sample_rate * fps)
+    print("Using sample rate of " + str(frame_sample_rate) + " frames per sample")
     success, image = vidcap.read()
     count = 0
     success = True
@@ -74,7 +77,7 @@ def get_dominant_color(img_path):
 
 args = sys.argv
 if (len(args) != 5):
-    print("Expecting: movie name, movie file path, frame sample rate, scale")
+    print("Expecting: movie name, movie file path, second sample rate, scale")
     exit()
 
 MOVIE_NAME = args[1]
