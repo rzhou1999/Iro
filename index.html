@@ -27,9 +27,10 @@
   
   Select film:
   <select id="filmSelector">
-    <option value="Millennium Actress">Millennium Actresss</option>
-    <option value="Tampopo">Tampopo</option>
-    <option value="Rickroll">???</option>
+    <option value="millenniumactress">Millennium Actress</option>
+    <option value="tampopo">Tampopo</option>
+    <option value="spiritedaway">Spirited Away</option>
+    <option value="rickroll">???</option>
   </select>
 
   <button onclick="reloadData()">Click to reload</button>
@@ -46,13 +47,20 @@
 
   <script>
 
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  if (urlParams.get("film")){
+    document.getElementById("filmSelector").value = urlParams.get("film");
+  }
+
   const filmMap = {
-    "Millennium Actress": "https://randyzhou.com/Iro/backend/json/millenniumactress.json",
-    "Tampopo": "https://randyzhou.com/Iro/backend/json/tampopo.json",
-    "Rickroll": "https://randyzhou.com/Iro/backend/json/rickroll.json"
+    "millenniumactress": "https://randyzhou.com/Iro/backend/json/millenniumactress.json",
+    "tampopo": "https://randyzhou.com/Iro/backend/json/tampopo.json",
+    "spiritedaway": "https://randyzhou.com/Iro/backend/json/spiritedaway.json",
+    "rickroll": "https://randyzhou.com/Iro/backend/json/rickroll.json"
   }
   async function reloadData(){
-	  var bins = await  d3.json(filmMap[document.getElementById("filmSelector").value])
+	  var bins = await d3.json(filmMap[document.getElementById("filmSelector").value])
     loadGraph(bins)
     document.getElementById("source").innerHTML = ""
   }
