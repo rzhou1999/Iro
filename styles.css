@@ -5,17 +5,17 @@ body {
 }
 
 #modal {
-	z-index: 1000;
-	position: absolute;
-	background-color: black;
-	min-width: 100%;
+    z-index: 1000;
+    position: absolute;
+    background-color: black;
+    min-width: 100%;
     min-height: 100%;
-display: table;
+    display: table;
 }
 
 #modalText {
     font-size: 15vmin;
-text-align: center;
+    text-align: center;
     display: table-cell;
     vertical-align: middle;
 }
@@ -24,6 +24,14 @@ text-align: center;
     font-size: 6vmin;
 }
 
+#disclaimer {
+    bottom: 0;
+    font-size: 1.5vmin;  
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+}
 
 #iroTitle {
     font-size: 15vmin;
