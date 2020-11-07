@@ -24,7 +24,7 @@ body {
     font-size: 6vmin;
 }
 
-#disclaimer {
+.footer {
     bottom: 0;
     font-size: 1.5vmin;  
     position: fixed;
