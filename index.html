@@ -56,10 +56,14 @@
 
   <script>
 
+  const jsonPath = "https://randyzhou.com/Iro/backend/json/";
+  var currentFilm;
+
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   if (urlParams.get("film")){
     document.getElementById("filmSelector").value = urlParams.get("film");
+    currentFilm = urlParams.get("film");
   }
 
   const filmMap = {
@@ -75,7 +79,9 @@
     "rickroll": "https://randyzhou.com/Iro/backend/json/rickroll.json"
   }
   async function reloadData(){
-	  var bins = await d3.json(filmMap[document.getElementById("filmSelector").value])
+    if (document.getElementById("filmSelector").value)
+      currentFilm = document.getElementById("filmSelector").value;
+    var bins = await d3.json(jsonPath + currentFilm + ".json")
     loadGraph(bins)
     document.getElementById("source").innerHTML = ""
   }
