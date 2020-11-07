@@ -66,18 +66,6 @@
     currentFilm = urlParams.get("film");
   }
 
-  const filmMap = {
-    "rashomon": "https://randyzhou.com/Iro/backend/json/rashomon.json",
-    "iwasbornbut": "https://randyzhou.com/Iro/backend/json/iwasbornbut.json",
-    "latespring": "https://randyzhou.com/Iro/backend/json/latespring.json",
-    "millenniumactress": "https://randyzhou.com/Iro/backend/json/millenniumactress.json",
-    "tampopo": "https://randyzhou.com/Iro/backend/json/tampopo.json",
-    "themourningforest": "https://randyzhou.com/Iro/backend/json/themourningforest.json",
-    "funeralparadeofroses": "https://randyzhou.com/Iro/backend/json/funeralparadeofroses.json",
-    "house": "https://randyzhou.com/Iro/backend/json/house.json",
-    "spiritedaway": "https://randyzhou.com/Iro/backend/json/spiritedaway.json",
-    "rickroll": "https://randyzhou.com/Iro/backend/json/rickroll.json"
-  }
   async function reloadData(){
     if (document.getElementById("filmSelector").value)
       currentFilm = document.getElementById("filmSelector").value;
