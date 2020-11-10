@@ -1,4 +1,4 @@
-Iro writeup 1
+## *I Was Born, But...* Analysis
 
 *An interactive version of the images seen below can be accessed at https://randyzhou.com/Iro/?film=iwasbornbut*
 
