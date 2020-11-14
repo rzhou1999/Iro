@@ -120,7 +120,7 @@
           .attr("width", d => barWidth)
           .attr("y", d => 0)
           .attr("fill", d => rgbArrayToString(d.color))
-          .on('mouseover', function(d,i){updateSource(d.toElement.__data__) })
+          .on('mouseover', function(d,i){updateSource(d.target.__data__) })
           .attr("height", d => height);
     }
     else {
@@ -136,7 +136,7 @@
         .attr("width", d => (width/bins.length))
         .attr("y", d => 0)
         .attr("fill", d => rgbArrayToString(d.color))
-        .on('mouseover', function(d,i){updateSource(d.toElement.__data__) })
+        .on('mouseover', function(d,i){updateSource(d.target.__data__) })
         .attr("height", d => height);
     }
   }
