@@ -4,7 +4,7 @@
 
 Iro is a visualization project developed for the ASIAN 2252 course at Cornell university. Taking inspiration from projects such as [Harry Potter Movie Colors](http://movie-colors.com/hp/), Iro is intended to serve as an educational and interactive visualization tool that synthesizes and presents usage of color and lighting throughout a film's runtime.
 
-## Usage
+## Webpage Usage
 
 Iro is deployed and viewable online at https://randyzhou.com/Iro/. It is hosted on Github Pages (who we are forever indebted to for free web hosting).
 
@@ -16,7 +16,7 @@ All films are also accessible via direct link by using the "film" [query paramet
 
 A "scroll mode" which may help when inspecting movies on a closer level can be activated by first enabling the "Fixed length" checkbox, and then reloading the visualizer.
 
-## Usage
+## Developer Usage
 
 Iro can be deployed locally by simply cloning this github repository and hosting on a different webserver. However, due to cross origin request limitations, it does not seem possible to host the entire project locally (in particular, the contents of the backend/json folder cannot be retrieved running locally).
 
