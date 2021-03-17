@@ -6,13 +6,13 @@ Iro is a visualization project developed for the ASIAN 2252 course at Cornell un
 
 ## Webpage Usage
 
-Iro is deployed and viewable online at https://randyzhou.com/Iro/. It is hosted on Github Pages (who we are forever indebted to for free web hosting).
+Iro is deployed and viewable online at https://randy-zhou.me/Iro/. It is hosted on Github Pages (who we are forever indebted to for free web hosting).
 
 Scrolling over a color bar will also load the corresponding frame, its dominant color's rgb values, as well as its timestamp.
 
 Specific films can be selected using the "Select film" dropdown menu on the upper half of the webpage. We include the contents of the ASIAN 2252 syllabus starting from Kurosawa's *Rashomon* up to Miyazaki's *Spirited Away* (although the missing entries will likely be added once the authors get a spare moment to breathe).
 
-All films are also accessible via direct link by using the "film" [query parameter](https://en.wikipedia.org/wiki/Query_string)-- for example, in order to link directly to the film *I Was Born, But...*, one may use the URL https://randyzhou.com/Iro/?film=iwasbornbut. Only films part of the ASIAN 2252 curriculum are included in the default dropdown, but other [hidden entries](https://github.com/rzhou1999/Iro/tree/master/backend/json) (mostly just KyoAni films because I stan KyoAni *hard*) can be accessed by modifying the URL.
+All films are also accessible via direct link by using the "film" [query parameter](https://en.wikipedia.org/wiki/Query_string)-- for example, in order to link directly to the film *I Was Born, But...*, one may use the URL https://randy-zhou.me/Iro/?film=iwasbornbut. Only films part of the ASIAN 2252 curriculum are included in the default dropdown, but other [hidden entries](https://github.com/rzhou1999/Iro/tree/master/backend/json) (mostly just KyoAni films because I stan KyoAni *hard*) can be accessed by modifying the URL.
 
 A "scroll mode" which may help when inspecting movies on a closer level can be activated by first enabling the "Fixed length" checkbox, and then reloading the visualizer.
 
@@ -49,4 +49,4 @@ Iro was writen by [Randy Zhou](https://github.com/rzhou1999) and [Alexander DeGr
 
 ## Disclaimer (please don't sue us)
 
-https://randyzhou.com/Iro/disclaimer.html
+https://randy-zhou.me/Iro/disclaimer.html
